@@ -1,103 +1,130 @@
-import Image from "next/image";
+'use client';
 
-export default function Home() {
+import React, { useState } from 'react';
+import './AdvocateSection.css';
+import { FaUser, FaMapMarkerAlt, FaWalking, FaInstagram } from 'react-icons/fa';
+
+interface Advocate {
+  name: string;
+  state: string;
+  location: string;
+  handle: string;
+  profileLink: string;
+}
+
+const advocates: Advocate[] = [
+  {
+    name: 'John Smith',
+    state: 'California',
+    location: 'Golden Gate Park, San Francisco',
+    handle: '@johnsmith',
+    profileLink: 'https://instagram.com/johnsmith',
+  },
+  {
+    name: 'Maria Rodriguez',
+    state: 'Texas',
+    location: 'Buffalo Bayou Park, Houston',
+    handle: '@mariawalks',
+    profileLink: 'https://instagram.com/mariawalks',
+  },
+  {
+    name: 'David Kim',
+    state: 'New York',
+    location: 'Central Park, New York City',
+    handle: '@davidk',
+    profileLink: 'https://instagram.com/davidk',
+  },
+  {
+    name: 'Aisha Johnson',
+    state: 'Florida',
+    location: 'Bayfront Park, Miami',
+    handle: '@aisha_j',
+    profileLink: 'https://instagram.com/aisha_j',
+  },
+  {
+    name: 'Michael Chen',
+    state: 'Illinois',
+    location: 'Millennium Park, Chicago',
+    handle: '@mike_chen',
+    profileLink: 'https://instagram.com/mike_chen',
+  },
+];
+
+const AdvocateSection = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const filteredAdvocates = advocates.filter((advocate) =>
+    advocate.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    advocate.state.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    advocate.location.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="advocate-container">
+      <section className="hero">
+        <h1>Out on a Limb</h1>
+        <p>Join our global movement to create awareness for people born without limbs</p>
+        <span>Together we walk, together we make a difference.</span>
+      </section>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      <section className="advocate-section">
+        <h2>Our Lead Advocates</h2>
+        <p>Find a walk near you and join our mission to raise awareness</p>
+
+        <input
+          type="text"
+          placeholder="Search lead advocates or locations..."
+          className="search-bar"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+
+        <div className="table-wrapper">
+          <table className="advocate-table">
+            <thead>
+              <tr>
+                <th><FaUser className="icon" /> Lead Advocate</th>
+                <th><FaMapMarkerAlt className="icon" /> State</th>
+                <th><FaWalking className="icon" /> Walk Location</th>
+                <th><FaInstagram className="icon" /> Social Media</th>
+              </tr>
+            </thead>
+            <tbody>
+              {filteredAdvocates.length > 0 ? (
+                filteredAdvocates.map((advocate, index) => (
+                  <tr key={index}>
+                    <td>{advocate.name}</td>
+                    <td>{advocate.state}</td>
+                    <td>{advocate.location}</td>
+                    <td>
+                      <a
+                        href={advocate.profileLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="social-link"
+                      >
+                        {advocate.handle}
+                      </a>
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan={4} style={{ textAlign: 'center', padding: '1rem', color: 'orangered' }}>
+                    🔍 No advocates found matching your search.
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </table>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+        <div className="contact-bar">
+          📞 Official Event Contact: <span>+1 (888) 123-4567</span>
+        </div>
+      </section>
     </div>
   );
-}
+};
+
+export default AdvocateSection;
