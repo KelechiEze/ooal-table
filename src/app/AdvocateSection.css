@@ -3,6 +3,16 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Keyframes for Icon Bounce */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
 /* Hero Section */
 .hero {
     background-color: orangered;
@@ -56,13 +66,14 @@
     margin: 0 auto 2rem;
     border: 1px solid #ccc;
     border-radius: 6px;
+    font-size: 13px;
     color: #333;
     background-color: white;
 }
 
 input::placeholder {
     color: #333;
-    font-size: 15px;
+    font-size: 14px;
 }
 
 /* Table Wrapper */
@@ -111,6 +122,7 @@ input::placeholder {
 .icon {
     margin-right: 0.5rem;
     vertical-align: middle;
+    animation: bounce 2.5s infinite ease-in-out;
 }
 
 /* Contact Bar */
