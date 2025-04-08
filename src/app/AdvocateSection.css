@@ -150,10 +150,14 @@
     transform: scale(1.05);
   }
   
-  /* 🔶 Mobile 375px */
-  @media (max-width: 375px) {
+  /* 🔶 Responsive Styles for Screens Up to 800px */
+  @media (max-width: 800px) {
     .hero h1 {
       font-size: 1.75rem;
+    }
+  
+    .hero p {
+      font-size: 1rem;
     }
   
     .search-bar {
@@ -163,6 +167,10 @@
   
     .advocate-section h2 {
       font-size: 1.25rem;
+    }
+  
+    .advocate-section p {
+      font-size: 0.9rem;
     }
   
     .advocate-table {
@@ -207,88 +215,6 @@
   
     .social-link {
       font-size: 0.85rem;
-    }
-  }
-  
-  /* 🔶 Mobile 425px */
-  @media (max-width: 425px) {
-    .hero h1 {
-      font-size: 2rem;
-    }
-  
-    .search-bar {
-      width: 90%;
-      font-size: 13px;
-    }
-  
-    .advocate-section h2 {
-      font-size: 1.35rem;
-    }
-  
-    .advocate-section p {
-      font-size: 0.9rem;
-    }
-  
-    .advocate-table {
-      display: none;
-    }
-  
-    .mobile-card {
-      width: 92%;
-    }
-  
-    .contact-bar {
-      font-size: 0.9rem;
-    }
-  
-    .social-link {
-      font-size: 0.9rem;
-    }
-  }
-  
-  /* 🔶 Tablet / Mid-size 725px */
-  @media (max-width: 725px) {
-    .hero h1 {
-      font-size: 2.2rem;
-    }
-  
-    .hero p {
-      font-size: 1rem;
-    }
-  
-    .search-bar {
-      width: 80%;
-      font-size: 14px;
-    }
-  
-    .advocate-section h2 {
-      font-size: 1.4rem;
-    }
-  
-    .advocate-section p {
-      font-size: 0.95rem;
-    }
-  
-    .advocate-table {
-      width: 100%;
-      min-width: unset;
-      font-size: 13px;
-      padding: 0;
-    }
-  
-    .advocate-table th,
-    .advocate-table td {
-      padding: 0.6rem 1rem;
-      font-size: 12px;
-    }
-  
-    .contact-bar {
-      font-size: 0.95rem;
-      padding: 0.8rem;
-    }
-  
-    .social-link {
-      font-size: 0.95rem;
     }
   }
   

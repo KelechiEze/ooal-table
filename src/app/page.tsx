@@ -54,9 +54,9 @@ const AdvocateSection = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [isMobile, setIsMobile] = useState(false);
 
-  // Handle screen resize detection
+  // ✅ Updated to match CSS media query
   useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth <= 375);
+    const checkMobile = () => setIsMobile(window.innerWidth <= 800);
     checkMobile(); // Check on mount
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
