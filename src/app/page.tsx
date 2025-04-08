@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './AdvocateSection.css';
 import { FaUser, FaMapMarkerAlt, FaWalking, FaInstagram } from 'react-icons/fa';
 
@@ -52,6 +52,15 @@ const advocates: Advocate[] = [
 
 const AdvocateSection = () => {
   const [searchTerm, setSearchTerm] = useState('');
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Handle screen resize detection
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 375);
+    checkMobile(); // Check on mount
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const filteredAdvocates = advocates.filter((advocate) =>
     advocate.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -79,45 +88,74 @@ const AdvocateSection = () => {
           onChange={(e) => setSearchTerm(e.target.value)}
         />
 
-        <div className="table-wrapper">
-          <table className="advocate-table">
-            <thead>
-              <tr>
-                <th><FaUser className="icon" /> Lead Advocate</th>
-                <th><FaMapMarkerAlt className="icon" /> State</th>
-                <th><FaWalking className="icon" /> Walk Location</th>
-                <th><FaInstagram className="icon" /> Social Media</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filteredAdvocates.length > 0 ? (
-                filteredAdvocates.map((advocate, index) => (
-                  <tr key={index}>
-                    <td>{advocate.name}</td>
-                    <td>{advocate.state}</td>
-                    <td>{advocate.location}</td>
-                    <td>
-                      <a
-                        href={advocate.profileLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="social-link"
-                      >
-                        {advocate.handle}
-                      </a>
+        {!isMobile ? (
+          <div className="table-wrapper">
+            <table className="advocate-table">
+              <thead>
+                <tr>
+                  <th><FaUser className="icon" /> Lead Advocate</th>
+                  <th><FaMapMarkerAlt className="icon" /> State</th>
+                  <th><FaWalking className="icon" /> Walk Location</th>
+                  <th><FaInstagram className="icon" /> Social Media</th>
+                </tr>
+              </thead>
+              <tbody>
+                {filteredAdvocates.length > 0 ? (
+                  filteredAdvocates.map((advocate, index) => (
+                    <tr key={index}>
+                      <td>{advocate.name}</td>
+                      <td>{advocate.state}</td>
+                      <td>{advocate.location}</td>
+                      <td>
+                        <a
+                          href={advocate.profileLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="social-link"
+                        >
+                          {advocate.handle}
+                        </a>
+                      </td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td colSpan={4} style={{ textAlign: 'center', padding: '1rem', color: 'orangered' }}>
+                      🔍 No advocates found matching your search.
                     </td>
                   </tr>
-                ))
-              ) : (
-                <tr>
-                  <td colSpan={4} style={{ textAlign: 'center', padding: '1rem', color: 'orangered' }}>
-                    🔍 No advocates found matching your search.
-                  </td>
-                </tr>
-              )}
-            </tbody>
-          </table>
-        </div>
+                )}
+              </tbody>
+            </table>
+          </div>
+        ) : (
+          <>
+            {filteredAdvocates.length > 0 ? (
+              filteredAdvocates.map((advocate, index) => (
+                <div key={index} className="mobile-card">
+                  <h3>{advocate.name}</h3>
+                  <p><FaMapMarkerAlt className="icon" /> {advocate.state}</p>
+                  <p><FaWalking className="icon" /> {advocate.location}</p>
+                  <p>
+                    <FaInstagram className="icon" />
+                    <a
+                      href={advocate.profileLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="social-link"
+                    >
+                      {advocate.handle}
+                    </a>
+                  </p>
+                </div>
+              ))
+            ) : (
+              <div style={{ textAlign: 'center', padding: '1rem', color: 'orangered' }}>
+                🔍 No advocates found matching your search.
+              </div>
+            )}
+          </>
+        )}
 
         <div className="contact-bar">
           📞 Official Event Contact: <span>+1 (888) 123-4567</span>

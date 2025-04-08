@@ -1,65 +1,65 @@
 /* General container */
 .advocate-container {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-/* Keyframes for Icon Bounce */
-@keyframes bounce {
+  }
+  
+  /* Keyframes for Icon Bounce */
+  @keyframes bounce {
     0%, 100% {
-        transform: translateY(0);
+      transform: translateY(0);
     }
     50% {
-        transform: translateY(-6px);
+      transform: translateY(-6px);
     }
-}
-
-/* Hero Section */
-.hero {
+  }
+  
+  /* Hero Section */
+  .hero {
     background-color: orangered;
     color: white;
     text-align: center;
     padding: 3rem 1rem 2rem;
-}
-
-.hero h1 {
+  }
+  
+  .hero h1 {
     font-size: 2.5rem;
     font-weight: bold;
     margin-bottom: 0.8rem;
-}
-
-.hero p {
+  }
+  
+  .hero p {
     font-size: 1rem;
     margin: 0.5rem 0;
-}
-
-.hero span {
+  }
+  
+  .hero span {
     display: block;
     font-weight: 500;
     margin-top: 1.7rem;
-}
-
-/* Advocates Section */
-.advocate-section {
+  }
+  
+  /* Advocates Section */
+  .advocate-section {
     background-color: #f5f5f5;
     text-align: center;
     padding: 2rem 1rem;
-}
-
-.advocate-section h2 {
+  }
+  
+  .advocate-section h2 {
     font-size: 1.5rem;
     font-weight: 600;
     margin-bottom: 0.5rem;
     color: #333;
-}
-
-.advocate-section p {
+  }
+  
+  .advocate-section p {
     font-size: 0.95rem;
     margin-bottom: 1.5rem;
     color: #444;
-}
-
-/* Search Bar */
-.search-bar {
+  }
+  
+  /* Search Bar */
+  .search-bar {
     padding: 0.5rem;
     width: 60%;
     max-width: 500px;
@@ -69,21 +69,21 @@
     font-size: 13px;
     color: #333;
     background-color: white;
-}
-
-input::placeholder {
+  }
+  
+  input::placeholder {
     color: #333;
     font-size: 14px;
-}
-
-/* Table Wrapper */
-.table-wrapper {
+  }
+  
+  /* Table Wrapper */
+  .table-wrapper {
     width: 100%;
     overflow-x: auto;
-}
-
-/* Table Styling */
-.advocate-table {
+  }
+  
+  /* Table Styling */
+  .advocate-table {
     width: 85%;
     border-collapse: collapse;
     table-layout: fixed;
@@ -92,10 +92,10 @@ input::placeholder {
     background-color: white;
     border-radius: 8px;
     overflow: hidden;
-}
-
-.advocate-table th,
-.advocate-table td {
+  }
+  
+  .advocate-table th,
+  .advocate-table td {
     padding: 0.75rem 5rem;
     text-align: left;
     font-size: 12px;
@@ -103,30 +103,28 @@ input::placeholder {
     vertical-align: middle;
     word-wrap: break-word;
     word-break: break-word;
-}
-
-/* Header row */
-.advocate-table th {
+  }
+  
+  .advocate-table th {
     background-color: orangered;
     color: white;
     font-weight: 600;
     border-bottom: 2px solid #eee;
-}
-
-/* Table rows */
-.advocate-table td {
+  }
+  
+  .advocate-table td {
     border-top: 1px solid #eee;
-}
-
-/* Icons */
-.icon {
+  }
+  
+  /* Icons */
+  .icon {
     margin-right: 0.5rem;
     vertical-align: middle;
     animation: bounce 2.5s infinite ease-in-out;
-}
-
-/* Contact Bar */
-.contact-bar {
+  }
+  
+  /* Contact Bar */
+  .contact-bar {
     background-color: #fff4f0;
     color: orangered;
     font-weight: 600;
@@ -135,53 +133,81 @@ input::placeholder {
     border-radius: 6px;
     display: inline-block;
     font-size: 0.95rem;
-}
-
-/* Social Link Styling */
-.social-link {
+  }
+  
+  /* Social Link Styling */
+  .social-link {
     color: orangered;
     font-weight: 500;
     text-decoration: none;
     transition: color 0.3s ease, transform 0.3s ease;
     display: inline-block;
-}
-
-.social-link:hover {
+  }
+  
+  .social-link:hover {
     color: #d6410f;
     text-decoration: underline;
     transform: scale(1.05);
-}
-
-/* 375px Mobile Responsiveness */
-@media (max-width: 375px) {
+  }
+  
+  /* Responsive Styling */
+  @media (max-width: 375px) {
     .hero h1 {
-        font-size: 1.75rem;
+      font-size: 1.75rem;
     }
-
+  
     .search-bar {
-        width: 90%;
+      width: 90%;
+      font-size: 13px;
     }
-
+  
     .advocate-section h2 {
-        font-size: 1.25rem;
+      font-size: 1.25rem;
     }
-
+  
     .advocate-table {
-        min-width: unset;
-        font-size: 0.85rem;
+      display: none;
     }
-
-    .advocate-table th,
-    .advocate-table td {
-        padding: 0.5rem 0.75rem;
+  
+    .mobile-card {
+      background-color: #fff;
+      border: 1px solid #ffe0d2;
+      border-left: 4px solid orangered;
+      border-radius: 6px;
+      margin: 1rem auto;
+      padding: 1rem;
+      width: 90%;
+      text-align: left;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
     }
-
+  
+    .mobile-card h3 {
+      color: orangered;
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+  
+    .mobile-card p {
+      font-size: 0.875rem;
+      margin: 0.3rem 0;
+      display: flex;
+      align-items: center;
+      color: #333;
+    }
+  
+    .mobile-card p .icon {
+      margin-right: 0.5rem;
+      font-size: 1rem;
+      animation: bounce 2.5s infinite ease-in-out;
+    }
+  
     .contact-bar {
-        font-size: 0.85rem;
-        padding: 0.75rem;
+      font-size: 0.85rem;
+      padding: 0.75rem;
     }
-
+  
     .social-link {
-        font-size: 0.85rem;
+      font-size: 0.85rem;
     }
-}
+  }
+  
