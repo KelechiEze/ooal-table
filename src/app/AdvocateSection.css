@@ -15,7 +15,7 @@
   
   /* Hero Section */
   .hero {
-    background-color: orangered;
+    background-color: #FF6200;
     color: white;
     text-align: center;
     padding: 3rem 1rem 2rem;
@@ -106,7 +106,7 @@
   }
   
   .advocate-table th {
-    background-color: orangered;
+    background-color: #FF6200;
     color: white;
     font-weight: 600;
     border-bottom: 2px solid #eee;
@@ -126,7 +126,7 @@
   /* Contact Bar */
   .contact-bar {
     background-color: #fff4f0;
-    color: orangered;
+    color: #FF6200;
     font-weight: 600;
     margin-top: 2rem;
     padding: 1rem;
@@ -137,7 +137,7 @@
   
   /* Social Link Styling */
   .social-link {
-    color: orangered;
+    color: #FF6200;
     font-weight: 500;
     text-decoration: none;
     transition: color 0.3s ease, transform 0.3s ease;
@@ -145,12 +145,12 @@
   }
   
   .social-link:hover {
-    color: #d6410f;
+    color: #FF6200;
     text-decoration: underline;
     transform: scale(1.05);
   }
   
-  /* Responsive Styling */
+  /* 🔶 Mobile 375px */
   @media (max-width: 375px) {
     .hero h1 {
       font-size: 1.75rem;
@@ -172,7 +172,7 @@
     .mobile-card {
       background-color: #fff;
       border: 1px solid #ffe0d2;
-      border-left: 4px solid orangered;
+      border-left: 4px solid #FF6200;
       border-radius: 6px;
       margin: 1rem auto;
       padding: 1rem;
@@ -182,7 +182,7 @@
     }
   
     .mobile-card h3 {
-      color: orangered;
+      color: #FF6200;
       font-size: 1rem;
       margin-bottom: 0.5rem;
     }
@@ -198,7 +198,6 @@
     .mobile-card p .icon {
       margin-right: 0.5rem;
       font-size: 1rem;
-      animation: bounce 2.5s infinite ease-in-out;
     }
   
     .contact-bar {
@@ -208,6 +207,88 @@
   
     .social-link {
       font-size: 0.85rem;
+    }
+  }
+  
+  /* 🔶 Mobile 425px */
+  @media (max-width: 425px) {
+    .hero h1 {
+      font-size: 2rem;
+    }
+  
+    .search-bar {
+      width: 90%;
+      font-size: 13px;
+    }
+  
+    .advocate-section h2 {
+      font-size: 1.35rem;
+    }
+  
+    .advocate-section p {
+      font-size: 0.9rem;
+    }
+  
+    .advocate-table {
+      display: none;
+    }
+  
+    .mobile-card {
+      width: 92%;
+    }
+  
+    .contact-bar {
+      font-size: 0.9rem;
+    }
+  
+    .social-link {
+      font-size: 0.9rem;
+    }
+  }
+  
+  /* 🔶 Tablet / Mid-size 725px */
+  @media (max-width: 725px) {
+    .hero h1 {
+      font-size: 2.2rem;
+    }
+  
+    .hero p {
+      font-size: 1rem;
+    }
+  
+    .search-bar {
+      width: 80%;
+      font-size: 14px;
+    }
+  
+    .advocate-section h2 {
+      font-size: 1.4rem;
+    }
+  
+    .advocate-section p {
+      font-size: 0.95rem;
+    }
+  
+    .advocate-table {
+      width: 100%;
+      min-width: unset;
+      font-size: 13px;
+      padding: 0;
+    }
+  
+    .advocate-table th,
+    .advocate-table td {
+      padding: 0.6rem 1rem;
+      font-size: 12px;
+    }
+  
+    .contact-bar {
+      font-size: 0.95rem;
+      padding: 0.8rem;
+    }
+  
+    .social-link {
+      font-size: 0.95rem;
     }
   }
   
